@@ -14,7 +14,7 @@ function Navbar() {
         <h1 class="sr-only">Argent Bank</h1>
       </Link>
       <div>
-        <Link to={"/sign-in"} className='main-nav-item'>
+        <Link to={"/login"} className='main-nav-item'>
           <i class="fa fa-user-circle"></i>
           Sign In
         </Link>
