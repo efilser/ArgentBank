@@ -3,12 +3,12 @@ import Account from '../../components/Account/Account';
 
 function User() {
   return (
-    <main class="main bg-dark">
-      <div class="header">
+    <main className="main bg-dark">
+      <div className="header">
         <h1>Welcome back<br />Tony Jarvis!</h1>
-        <button class="edit-button">Edit Name</button>
+        <button className="edit-button">Edit Name</button>
       </div>
-      <h2 class="sr-only">Accounts</h2>
+      <h2 className="sr-only">Accounts</h2>
       <Account 
         title="Argent Bank Checking (x8349)"
         amount="$2,082.79"

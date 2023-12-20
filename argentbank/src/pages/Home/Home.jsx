@@ -7,17 +7,17 @@ import iconSecurity from '../../assets/icon-security.png';
 function Home() {
   return (
     <main>
-      <div class="hero">
-        <section class="hero-content">
-          <h2 class="sr-only">Promoted Content</h2>
-          <p class="subtitle">No fees.</p>
-          <p class="subtitle">No minimum deposit.</p>
-          <p class="subtitle">High interest rates.</p>
-          <p class="text">Open a savings account with Argent Bank today!</p>
+      <div className="hero">
+        <section className="hero-content">
+          <h2 className="sr-only">Promoted Content</h2>
+          <p className="subtitle">No fees.</p>
+          <p className="subtitle">No minimum deposit.</p>
+          <p className="subtitle">High interest rates.</p>
+          <p className="text">Open a savings account with Argent Bank today!</p>
         </section>
       </div>
-      <section class="features">
-        <h2 class="sr-only">Features</h2>
+      <section className="features">
+        <h2 className="sr-only">Features</h2>
         <Feature
           iconSrc={iconChat}
           iconAlt="Chat Icon"
