@@ -7,7 +7,7 @@ import iconSecurity from '../../assets/icon-security.png';
 function Home() {
   return (
     <main>
-      <div className="hero">
+      <header className="hero">
         <section className="hero-content">
           <h2 className="sr-only">Promoted Content</h2>
           <p className="subtitle">No fees.</p>
@@ -15,7 +15,7 @@ function Home() {
           <p className="subtitle">High interest rates.</p>
           <p className="text">Open a savings account with Argent Bank today!</p>
         </section>
-      </div>
+      </header>
       <section className="features">
         <h2 className="sr-only">Features</h2>
         <Feature

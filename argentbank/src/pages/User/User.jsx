@@ -4,10 +4,10 @@ import Account from '../../components/Account/Account';
 function User() {
   return (
     <main className="main bg-dark">
-      <div className="header">
+      <header className="header">
         <h1>Welcome back<br />Tony Jarvis!</h1>
         <button className="edit-button">Edit Name</button>
-      </div>
+      </header>
       <h2 className="sr-only">Accounts</h2>
       <Account 
         title="Argent Bank Checking (x8349)"
