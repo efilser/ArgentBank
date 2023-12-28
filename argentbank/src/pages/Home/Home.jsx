@@ -1,4 +1,5 @@
 import '../../styles/main.css';
+import './Home.css';
 import Feature from '../../components/Feature/Feature';
 import iconChat from '../../assets/icon-chat.png';
 import iconMoney from '../../assets/icon-money.png';

@@ -1,4 +1,5 @@
 import '../../styles/main.css';
+import './User.css';
 import Account from '../../components/Account/Account';
 
 function User() {

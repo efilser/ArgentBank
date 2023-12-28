@@ -1,4 +1,4 @@
-import '../../styles/main.css';
+import './Account.css';
 
 function Account({ title, amount, description }) {
   return (
