@@ -1,6 +1,6 @@
 import '../../styles/main.css';
 import './Navbar.css';
-import logo from '../../assets/argentBankLogo.png';
+import logo from '../../assets/argentBankLogo.webp';
 import { Link } from 'react-router-dom';
 
 function Navbar() {

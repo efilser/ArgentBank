@@ -1,9 +1,9 @@
 import '../../styles/main.css';
 import './Home.css';
 import Feature from '../../components/Feature/Feature';
-import iconChat from '../../assets/icon-chat.png';
-import iconMoney from '../../assets/icon-money.png';
-import iconSecurity from '../../assets/icon-security.png';
+import iconChat from '../../assets/icon-chat.webp';
+import iconMoney from '../../assets/icon-money.webp';
+import iconSecurity from '../../assets/icon-security.webp';
 
 function Home() {
   return (
