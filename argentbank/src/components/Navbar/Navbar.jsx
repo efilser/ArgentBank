@@ -2,8 +2,18 @@ import '../../styles/main.css';
 import './Navbar.css';
 import logo from '../../assets/argentBankLogo.webp';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { signOut } from '../../redux/actions/authActions';
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const handleSignOut = () => {
+    dispatch(signOut());
+  };
+
   return (
     <nav className="main-nav">
       <Link to={"/"} className='main-nav-logo'>
@@ -14,9 +24,9 @@ function Navbar() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <Link to={"/login"} className='main-nav-item'>
-        <i className="fa fa-user-circle"></i>
-        Sign In
+      <Link to={isAuthenticated ? "/" : "/login"} className='main-nav-item' onClick={isAuthenticated ? handleSignOut : null}>
+        {isAuthenticated ? <i className="fa fa-sign-out"></i> : <i className="fa fa-user-circle"></i>}
+        {isAuthenticated ? "Sign Out" : "Sign In"}
       </Link>
     </nav>
   );
