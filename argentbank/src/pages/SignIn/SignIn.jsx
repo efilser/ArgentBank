@@ -9,7 +9,6 @@ function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
-  const token = useSelector((state) => state.auth.token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,15 +17,10 @@ function SignIn() {
     const password = document.getElementById('password').value;
 
     dispatch(signIn({ email, password })).then(() => {
-      if (token) {
+      if (localStorage.getItem('token')) {
         navigate('/profile');
       }
-      console.log(token);
     });
-
-    setTimeout(() => {
-      console.log(token);
-    }, 1000);
   };
 
   return (
