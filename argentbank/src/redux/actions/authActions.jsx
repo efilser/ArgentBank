@@ -1,22 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getToken = createAsyncThunk(
-  'auth/getToken',
-  async (_, { rejectWithValue }) => {
-    try {
-      const token = localStorage.getItem('token');
-      return token;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-)
-
 export const signIn = createAsyncThunk(
   'auth/signIn',
-  async ({ email, password }, { rejectWithValue }) => {
-    console.log(email, password);
-    console.log(JSON.stringify({ email, password }));
+  async ({ email, password }, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
@@ -29,13 +15,14 @@ export const signIn = createAsyncThunk(
       if (!response.ok) {
         throw new Error('Une erreur s\'est produite lors de la connexion');
       }
-      console.log(response);
 
       const data = await response.json();
-      console.log(data);
       const token = data.body.token;
-      console.log(token);
+
       localStorage.setItem('token', token); // Enregistrer le token dans le local storage
+
+      dispatch({ type: 'auth/signIn/fulfilled', payload: token });
+
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -49,6 +36,31 @@ export const signOut = createAsyncThunk(
       localStorage.removeItem('token'); // Supprimez le token du local storage
 
       return null;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getProfile = createAsyncThunk(
+  'auth/getProfile',
+  async (_, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const user = data.body.user;
+
+        dispatch({ type: 'auth/getProfile/fulfilled', payload: user });
+      } 
+
     } catch (error) {
       return rejectWithValue(error.message);
     }

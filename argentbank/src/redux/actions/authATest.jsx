@@ -1,6 +1,7 @@
 export const AUTHENTICATED = 'AUTHENTICATED'
 export const NOT_AUTHENTICATED = 'NOT_AUTHENTICATED' 
 export const SET_USER_NAME = 'SET_USER_NAME';
+
 const setToken = (token) => {
   localStorage.setItem("token", token);
 };
@@ -10,7 +11,7 @@ export const getToken = () => {
 };
 
 export const deleteToken = () => {
-localStorage.removeItem("token");
+  localStorage.removeItem("token");
 }
 
 export const loginUser = (email, password) => {
