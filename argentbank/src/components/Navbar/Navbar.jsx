@@ -9,10 +9,9 @@ function Navbar() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
-  console.log(user)
 
-  const handleSignOut = (event) => {
-    event.preventDefault();
+  const handleSignOut = (e) => {
+    e.preventDefault();
     dispatch(signOut());
   };
 
@@ -26,10 +25,18 @@ function Navbar() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <Link to={isAuthenticated ? "/" : "/login"} className='main-nav-item' onClick={isAuthenticated ? handleSignOut : null}>
+      <div className="main-nav-items">
+      {isAuthenticated ? 
+      <Link to="/profile" className='main-nav-item'>
+        <i className="fa fa-user-circle"></i>
+        {user?.userName}
+      </Link>
+      : null}
+      <Link to={isAuthenticated ? "/" : "/login"} className='main-nav-item' onClick={isAuthenticated ? handleSignOut : undefined}>
         {isAuthenticated ? <i className="fa fa-sign-out"></i> : <i className="fa fa-user-circle"></i>}
         {isAuthenticated ? "Sign Out" : "Sign In"}
       </Link>
+      </div>
     </nav>
   );
 }

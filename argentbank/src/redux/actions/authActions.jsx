@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const signIn = createAsyncThunk(
   'auth/signIn',
-  async ({ email, password }, { rejectWithValue, dispatch }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
@@ -21,7 +21,7 @@ export const signIn = createAsyncThunk(
 
       localStorage.setItem('token', token); // Enregistrer le token dans le local storage
 
-      dispatch({ type: 'auth/signIn/fulfilled', payload: token });
+      return data;
 
     } catch (error) {
       return rejectWithValue(error.message);
@@ -44,7 +44,7 @@ export const signOut = createAsyncThunk(
 
 export const getProfile = createAsyncThunk(
   'auth/getProfile',
-  async (_, { rejectWithValue, dispatch }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'POST',
@@ -56,10 +56,9 @@ export const getProfile = createAsyncThunk(
 
       if (response.ok) {
         const data = await response.json();
-        const user = data.body;
 
-        dispatch({ type: 'auth/getProfile/fulfilled', payload: user });
-      } 
+        return data.body;
+      }
 
     } catch (error) {
       return rejectWithValue(error.message);

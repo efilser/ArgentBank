@@ -1,13 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn } from '../../redux/actions/authActions';
+import { signIn, getProfile } from '../../redux/actions/authActions';
 import '../../styles/main.css';
 import './SignIn.css';
 
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
 
   const handleSubmit = async (e) => {
@@ -17,6 +16,7 @@ function SignIn() {
     const password = document.getElementById('password').value;
 
     dispatch(signIn({ email, password })).then(() => {
+      dispatch(getProfile());
       if (localStorage.getItem('token')) {
         navigate('/profile');
       }
@@ -31,11 +31,19 @@ function SignIn() {
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
-          <input type="text" id="username" />
+          <input 
+            type="text"
+            id="username"
+            required
+            />
         </div>
         <div className="input-wrapper">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
+          <input 
+          type="password"
+          id="password"
+          required
+          />
         </div>
         <div className="input-remember">
           <input type="checkbox" id="remember-me" />
@@ -43,7 +51,6 @@ function SignIn() {
         </div>
         <button className="sign-in-button">Sign In</button>
       </form>
-      {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
     </section>
   </main>

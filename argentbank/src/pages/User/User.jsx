@@ -1,12 +1,15 @@
 import '../../styles/main.css';
 import './User.css';
+import { useSelector } from 'react-redux';
 import Account from '../../components/Account/Account';
 
 function User() {
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <main className="main bg-dark">
       <header className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <h1>Welcome back<br />{user?.firstName} {user?.lastName}</h1>
         <button className="edit-button">Edit Name</button>
       </header>
       <h2 className="sr-only">Accounts</h2>
