@@ -13,7 +13,7 @@ export const signIn = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('Une erreur s\'est produite lors de la connexion');
+        throw new Error('Invalid credentials');
       }
 
       const data = await response.json();
@@ -56,7 +56,7 @@ export const getProfile = createAsyncThunk(
 
       if (response.ok) {
         const data = await response.json();
-        const user = data.body.user;
+        const user = data.body;
 
         dispatch({ type: 'auth/getProfile/fulfilled', payload: user });
       } 

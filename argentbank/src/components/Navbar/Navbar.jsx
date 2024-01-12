@@ -11,7 +11,8 @@ function Navbar() {
   const user = useSelector((state) => state.auth.user);
   console.log(user)
 
-  const handleSignOut = () => {
+  const handleSignOut = (event) => {
+    event.preventDefault();
     dispatch(signOut());
   };
 
