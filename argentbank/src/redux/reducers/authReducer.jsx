@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signIn, signOut, getProfile } from '../actions/authActions';
+import { signIn, signOut, getProfile, updateUserName } from '../actions/authActions';
 
 const initialState = {
   isAuthenticated: false,
@@ -42,6 +42,13 @@ const authSlice = createSlice({
       .addCase(getProfile.rejected, (state, action) => {
         state.error = action.payload;
       })
+      .addCase(updateUserName.fulfilled, (state, action) => {
+        state.user.userName = action.payload;
+        state.error = null;
+      })
+      .addCase(updateUserName.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
 

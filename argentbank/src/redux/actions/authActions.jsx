@@ -49,8 +49,8 @@ export const getProfile = createAsyncThunk(
       const response = await fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
@@ -59,6 +59,33 @@ export const getProfile = createAsyncThunk(
 
         return data.body;
       }
+
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserName = createAsyncThunk(
+  'auth/updateUserName',
+  async (userName, { rejectWithValue }) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify({ userName }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update user name');
+      }
+
+      const data = await response.json();
+
+      return data.userName;
 
     } catch (error) {
       return rejectWithValue(error.message);
