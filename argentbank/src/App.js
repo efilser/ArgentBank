@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn/SignIn';
 import User from './pages/User/User';
 import Footer from './components/Footer/Footer';
 import Error from './pages/Error/Error';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -15,7 +16,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<SignIn />} />
-        <Route path='/profile' element={<User />} />
+        <Route path='/profile' element={
+            <PrivateRoute>
+              <User />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
