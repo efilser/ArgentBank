@@ -6,7 +6,7 @@ html {
   color: #2c3e50;
 }
 
-body {
+body, #root {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -19,6 +19,7 @@ body {
 
 .bg-dark {
   background-color: #12002b;
+  padding: 1rem 0 3rem 0;
 }
 
 .sr-only {

@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap : 113px;
   padding-top: 63px;
   padding-bottom: 113px;
 }
@@ -29,4 +28,14 @@
 
 .error-link:visited {
   color: #2c3e50;
+}
+
+@media (min-width: 720px) {
+  .error {
+    padding-bottom: 125px;
+  }
+
+  .error-title {
+    font-size: 9rem;
+  }
 }

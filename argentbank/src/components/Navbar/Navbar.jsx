@@ -25,7 +25,7 @@ function Navbar() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <div className="main-nav-items">
+      <div>
       {isAuthenticated ? 
       <Link to="/profile" className='main-nav-item'>
         <i className="fa fa-user-circle"></i>

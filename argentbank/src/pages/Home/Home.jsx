@@ -7,7 +7,7 @@ import iconSecurity from '../../assets/icon-security.webp';
 
 function Home() {
   return (
-    <main>
+    <main className="main">
       <header className="hero">
         <section className="hero-content">
           <h2 className="sr-only">Promoted Content</h2>

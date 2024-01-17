@@ -32,3 +32,11 @@
   max-width: 100%;
   width: 200px;
 }
+
+.fa-user-circle {
+  margin-right: 0.3rem;
+}
+
+.fa-sign-out {
+  margin-right: 0.3rem;
+}
