@@ -85,7 +85,7 @@ export const updateUserName = createAsyncThunk(
 
       const data = await response.json();
 
-      return data.userName;
+      return data.body.userName;
 
     } catch (error) {
       return rejectWithValue(error.message);

@@ -1,18 +1,20 @@
 import '../../styles/main.css';
 import './Navbar.css';
 import logo from '../../assets/argentBankLogo.webp';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../../redux/actions/authActions';
 
 function Navbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
 
   const handleSignOut = (e) => {
     e.preventDefault();
     dispatch(signOut());
+    navigate('/');
   };
 
   return (
