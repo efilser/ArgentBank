@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import './Error.css'
 
 function Error() {
+  useEffect(() => {
+    document.title = 'Argent Bank - 404';
+    return () => {
+      document.title = 'Argent Bank';
+    };
+  }, []);
+
   return (
     <section className="main error">
       <h1 className="error-title">404</h1>

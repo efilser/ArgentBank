@@ -1,11 +1,19 @@
 import '../../styles/main.css';
 import './Home.css';
+import { useEffect } from 'react';
 import Feature from '../../components/Feature/Feature';
 import iconChat from '../../assets/icon-chat.webp';
 import iconMoney from '../../assets/icon-money.webp';
 import iconSecurity from '../../assets/icon-security.webp';
 
 function Home() {
+  useEffect(() => {
+    document.title = 'Argent Bank - Home Page';
+    return () => {
+      document.title = 'Argent Bank';
+    };
+  }, []);
+
   return (
     <main className="main">
       <header className="hero">

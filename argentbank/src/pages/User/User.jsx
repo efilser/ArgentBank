@@ -1,6 +1,6 @@
 import '../../styles/main.css';
 import './User.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Account from '../../components/Account/Account';
 import { updateUserName } from '../../redux/actions/authActions';
@@ -9,6 +9,13 @@ function User() {
   const user = useSelector((state) => state.auth.user);
   const [isEditing, setIsEditing] = useState(false); // État pour gérer l'affichage du formulaire
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.title = 'Argent Bank - Profile';
+    return () => {
+      document.title = 'Argent Bank';
+    };
+  }, []);
 
   const handleEdit = (e) => {
     e.preventDefault();

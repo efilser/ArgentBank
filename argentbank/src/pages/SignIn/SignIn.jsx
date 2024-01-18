@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn, getProfile } from '../../redux/actions/authActions';
+import { useEffect } from 'react';
 import '../../styles/main.css';
 import './SignIn.css';
 
@@ -8,6 +9,13 @@ function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const error = useSelector((state) => state.auth.error);
+
+  useEffect(() => {
+    document.title = 'Argent Bank - Login';
+    return () => {
+      document.title = 'Argent Bank';
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
