@@ -30,23 +30,23 @@ function User() {
   return (
     <main className="main bg-dark">
       {isEditing ? ( // Vérifier si le formulaire doit être affiché
-        <form className="header" onSubmit={handleSave}>
+        <form className="header-edit-form" onSubmit={handleSave}>
           <h1>Edit user info</h1>
-          <div>
+          <div className="edit-form-elts">
             <label htmlFor="userName">User name: </label>
             <input type="text" id="userName" defaultValue={user?.userName}/>
           </div>
-          <div>
+          <div className="edit-form-elts">
             <label htmlFor="firstName">First name: </label>
             <input type="text" id="firstName" value={user?.firstName} disabled/>
           </div>
-          <div>
+          <div className="edit-form-elts">
             <label htmlFor="lastName">Last name: </label>
             <input type="text" id="lastName" value={user?.lastName} disabled/>
           </div>
-          <div>
-          <button className="edit-button">Save</button>
-          <button className="edit-button" onClick={handleCancel}>Cancel</button>
+          <div className="edit-form-buttons">
+          <button className="edit-form-button">Save</button>
+          <button className="edit-form-button" onClick={handleCancel}>Cancel</button>
           </div>
         </form>
       ) : (
