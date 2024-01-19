@@ -142,9 +142,7 @@ paths:
         '200':
           description: User transaction retrieved successully 
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/SpecificTransaction'
+            $ref: '#/definitions/SpecificTransaction'
         '400':
           description: Invalid Fields
         '500':
@@ -237,6 +235,8 @@ definitions:
   Transactions:
     type: object
     properties:
+      id:
+        type: integer
       date:
         type: string
         format: date
@@ -249,6 +249,8 @@ definitions:
   SpecificTransaction:
     type: object
     properties:
+      id:
+        type: integer
       date:
         type: string
         format: date
