@@ -41,7 +41,7 @@ function User() {
           <h1>Edit user info</h1>
           <div className="edit-form-elts">
             <label htmlFor="userName">User name: </label>
-            <input type="text" id="userName" defaultValue={user?.userName}/>
+            <input type="text" id="userName" defaultValue={user?.userName} required/>
           </div>
           <div className="edit-form-elts">
             <label htmlFor="firstName">First name: </label>
