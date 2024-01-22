@@ -19,13 +19,14 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const email = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-
+  
     dispatch(signIn({ email, password })).then(() => {
-      dispatch(getProfile());
-      if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        dispatch(getProfile());
         navigate('/profile');
       }
     });
@@ -59,7 +60,7 @@ function SignIn() {
         </div>
         <button className="sign-in-button">Sign In</button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className='error-msg'>{error}</p>}
     </section>
   </main>
   );

@@ -74,6 +74,8 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
     put:
@@ -99,6 +101,8 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
   /user/transactions:
@@ -120,6 +124,8 @@ paths:
               $ref: '#/definitions/Transactions'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
   /user/transactions/{id}:
@@ -145,6 +151,8 @@ paths:
             $ref: '#/definitions/SpecificTransaction'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
     put:
@@ -175,6 +183,8 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
 securityDefinitions:
