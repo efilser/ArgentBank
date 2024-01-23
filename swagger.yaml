@@ -121,7 +121,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Transactions'
+              $ref: '#/definitions/Account'
         '400':
           description: Invalid Fields
         '401':
@@ -242,6 +242,15 @@ definitions:
     properties:
       userName:
         type: string
+  Account:
+    type: object
+    properties:
+      accountId:
+        type: integer
+      transactions:
+        type: array
+        items:
+          $ref: '#/definitions/Transactions'
   Transactions:
     type: object
     properties:
