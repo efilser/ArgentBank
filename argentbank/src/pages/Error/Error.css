@@ -1,0 +1,41 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 63px;
+  padding-bottom: 113px;
+}
+
+.error-title {
+  font-size: 6rem;
+}
+
+.error-text {
+  font-size: 2.25rem;
+  text-align: center;
+}
+
+.error-link {
+  text-decoration: none;
+  font-size: 1.125rem;
+}
+
+.error-link:hover,
+.error-link:focus {
+  text-decoration: underline;
+}
+
+.error-link:visited {
+  color: #2c3e50;
+}
+
+@media (min-width: 720px) {
+  .error {
+    padding-bottom: 125px;
+  }
+
+  .error-title {
+    font-size: 9rem;
+  }
+}

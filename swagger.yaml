@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Bank Argent API documentation
   description: Contains all available API endpoints in this codebase
-  version: '1.0.0'
+  version: '1.1.0'
   termsOfService: 'http://swagger.io/terms/'
 host: localhost:3001
 basePath: /api/v1
@@ -74,6 +74,8 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
     put:
@@ -99,6 +101,90 @@ paths:
             $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /user/transactions:
+    get:
+      security: 
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transactions
+      description: API for all Transactions
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transactions retrieved successully 
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Account'
+        '400':
+          description: Invalid Fields
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /user/transactions/{id}:
+    get:
+      security: 
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Specific Transaction
+      description: API for a specific Transaction
+      parameters:
+        - in: path
+          name: id
+          description: id of the transaction
+          type: integer
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction retrieved successully 
+          schema:
+            $ref: '#/definitions/SpecificTransaction'
+        '400':
+          description: Invalid Fields
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Update Transaction
+      description: API for updating a Specific Transaction
+      parameters:
+        - in: path
+          name: id
+          description: id of the transaction
+          type: integer
+          required: true
+        - in: body
+          name: body
+          description: Update transaction attributes
+          required: true
+          schema:
+            $ref: '#/definitions/SpecificTransactionUpdate'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: User transaction updated successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '401':
+          description: Unauthorized
         '500':
           description: Internal Server Error
 securityDefinitions:
@@ -155,4 +241,54 @@ definitions:
     type: object
     properties:
       userName:
+        type: string
+  Account:
+    type: object
+    properties:
+      accountId:
+        type: integer
+      transactions:
+        type: array
+        items:
+          $ref: '#/definitions/Transactions'
+  Transactions:
+    type: object
+    properties:
+      id:
+        type: integer
+      date:
+        type: string
+        format: date
+      description:
+        type: string
+      amount:
+        type: number
+      balance:
+        type: number
+  SpecificTransaction:
+    type: object
+    properties:
+      id:
+        type: integer
+      date:
+        type: string
+        format: date
+      description:
+        type: string
+      amount:
+        type: number
+      balance:
+        type: number
+      type:
+        type: string
+      category:
+        type: string
+      note:
+        type: string
+  SpecificTransactionUpdate:
+    type: object
+    properties:
+      category:
+        type: string
+      note:
         type: string

@@ -1,0 +1,41 @@
+.edit-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.header {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.header-edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 2rem;
+  gap: 10px;
+}
+
+.edit-form-elts {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.edit-form-button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  width: 10vw;
+}
