@@ -105,14 +105,14 @@ paths:
           description: Unauthorized
         '500':
           description: Internal Server Error
-  /user/transactions:
+  /transactions:
     get:
       security: 
         - Bearer: []
       tags:
-        - User Module
+        - Transactions Module
       summary: Transactions
-      description: API for all Transactions
+      description: API for monthly transactions by account
       produces:
         - application/json
       responses:
@@ -128,12 +128,12 @@ paths:
           description: Unauthorized
         '500':
           description: Internal Server Error
-  /user/transactions/{id}:
+  /transactions/{id}:
     get:
       security: 
         - Bearer: []
       tags:
-        - User Module
+        - Transactions Module
       summary: Specific Transaction
       description: API for a specific Transaction
       parameters:
@@ -159,7 +159,7 @@ paths:
       security:
         - Bearer: []
       tags:
-        - User Module
+        - Transactions Module
       summary: Update Transaction
       description: API for updating a Specific Transaction
       parameters:
@@ -180,7 +180,7 @@ paths:
         '200':
           description: User transaction updated successully
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/SpecificTransaction'
         '400':
           description: Invalid Fields
         '401':
